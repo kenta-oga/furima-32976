@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| family_name        | string  | null: false |
-| first_name         | string  | null: false |
-| family_name_kana   | string  | null: false |
-| first_name_kana    | string  | null: false |
-| birth_date         | date    | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| family_name        | string  | null: false               |
+| first_name         | string  | null: false               |
+| family_name_kana   | string  | null: false               |
+| first_name_kana    | string  | null: false               |
+| birth_date         | date    | null: false               |
 
 ### Association
 
@@ -63,6 +63,7 @@
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
 | phone_num     | string     | null: false                    |
+| traded_item   | references | null: false, foreign_key: true |
 
 
 ### Association

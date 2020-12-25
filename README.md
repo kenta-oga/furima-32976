@@ -63,8 +63,7 @@
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
 | phone_num     | string     | null: false                    |
-| item          | references | null: false, foreign_key: true |
-| user          | references | null: false, foreign_key: true |
+
 
 ### Association
 

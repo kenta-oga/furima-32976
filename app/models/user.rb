@@ -13,6 +13,8 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX
 
-  validates :nickname, presence: true
-  validates :birth_date, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birth_date
+  end
 end

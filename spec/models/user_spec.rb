@@ -47,16 +47,23 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
-    it 'passwordが英字のみでは保存されないこと' do
+    it 'passwordが英字のみでは登録できないこと' do
       @user.password = 'abcdef'
       @user.password_confirmation = 'abcdef'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is invalid')
     end
 
-    it 'passwordが数値のみで保存されないこと' do
+    it 'passwordが数値のみでは登録できないこと' do
       @user.password = '123456'
       @user.password_confirmation = '123456'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password is invalid')
+    end
+
+    it 'passwordが全角では登録できないこと' do
+      @user.password = 'ＡＢＣ１２３'
+      @user.password_confirmation = 'ＡＢＣ１２３'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is invalid')
     end
@@ -139,6 +146,54 @@ RSpec.describe User, type: :model do
 
     it 'first_name_kanaが半角英字では登録できないこと' do
       @user.first_name_kana = 'taro'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name kana is invalid')
+    end
+
+    it 'family_nameが全角英字では登録できないこと' do
+      @user.family_name = 'ＹＡＭＡＤＡ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name is invalid')
+    end
+
+    it 'first_nameが全角英字では登録できないこと' do
+      @user.first_name = 'ＴＡＲＯ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name is invalid')
+    end
+
+    it 'family_name_kanaが全角英字では登録できないこと' do
+      @user.family_name_kana = 'ＹＡＭＡＤＡ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name kana is invalid')
+    end
+
+    it 'first_name_kanaが全角英字では登録できないこと' do
+      @user.first_name_kana = 'ＴＡＲＯ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name kana is invalid')
+    end
+
+    it 'family_nameが半角カタカナでは登録できないこと' do
+      @user.family_name = 'ﾔﾏﾀﾞ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name is invalid')
+    end
+
+    it 'first_nameが半角カタカナでは登録できないこと' do
+      @user.first_name = 'ﾀﾛｳ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name is invalid')
+    end
+
+    it 'family_name_kanaが半角カタカナでは登録できないこと' do
+      @user.family_name_kana = 'ﾔﾏﾀﾞ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name kana is invalid')
+    end
+
+    it 'first_name_kanaが半角カタカナでは登録できないこと' do
+      @user.first_name_kana = 'ﾀﾛｳ'
       @user.valid?
       expect(@user.errors.full_messages).to include('First name kana is invalid')
     end

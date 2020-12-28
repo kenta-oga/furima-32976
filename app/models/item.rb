@@ -5,7 +5,8 @@ class Item < ApplicationRecord
   belongs_to :shipping
   belongs_to :prefecture
   belongs_to :schedule
-  belong_to :user
+  belongs_to :user
+  has_one_attached :image
 
   validates :name,          presence: true
   validates :info,          presence: true
@@ -14,5 +15,5 @@ class Item < ApplicationRecord
   validates :shipping_id,   numericality: { other_than: 1 } 
   validates :prefecture_id, numericality: { other_than: 1 } 
   validates :schedule_id,   numericality: { other_than: 1 } 
-  validates :price,         presence: true
+  validates :price,         presence: true, inclusion: { in: 300..9999999 }
 end

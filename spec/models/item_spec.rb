@@ -30,31 +30,31 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Info can't be blank")
         end
 
-        it 'category_idが1では登録できないこと' do
+        it 'categoryが未選択では登録できないこと' do
           @item.category_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Category must be other than 1')
         end
 
-        it 'status_idが1では登録できないこと' do
+        it 'statusが未選択では登録できないこと' do
           @item.status_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Status must be other than 1')
         end
 
-        it 'shipping_idが1では登録できないこと' do
+        it 'shippingが未選択では登録できないこと' do
           @item.shipping_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping must be other than 1')
         end
 
-        it 'prefecture_idが1では登録できないこと' do
+        it 'prefectureが未選択では登録できないこと' do
           @item.prefecture_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
         end
 
-        it 'schedule_idが1では登録できないこと' do
+        it 'scheduleが未選択では登録できないこと' do
           @item.schedule_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Schedule must be other than 1')

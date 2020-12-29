@@ -10,16 +10,6 @@ RSpec.describe Item, type: :model do
         it '全項目が存在すれば登録できること' do
           expect(@item).to be_valid
         end
-
-        it 'priceが300以上であれば登録できること' do
-          @item.price = 300
-          expect(@item).to be_valid
-        end
-
-        it 'priceが9999999以下であれば登録できること' do
-          @item.price = 9_999_999
-          expect(@item).to be_valid
-        end
       end
       context '商品新規登録できないとき' do
         it 'imageが空では登録できないこと' do

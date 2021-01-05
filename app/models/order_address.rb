@@ -9,4 +9,9 @@ class OrderAddress
     validates :addresses
     validates :phone_num
   end
+
+  def save
+    Order.create(item_id: item.id, user_id: user.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture.id, city: city, addresses: addresses, building: building, order_id: order.id)
+  end
 end

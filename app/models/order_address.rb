@@ -7,12 +7,13 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :addresses
-    validates :phone_num
+    validates :phone_num, format: { with: /\A\d{,11}\z/ }
     validates :token, presence: true
   end
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, addresses: addresses, building: building, phone_num: phone_num, order_id: order.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, addresses: addresses, building: building,
+                   phone_num: phone_num, order_id: order.id)
   end
 end

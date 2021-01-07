@@ -8,7 +8,9 @@ class OrderAddress
     validates :city
     validates :addresses
     validates :phone_num, format: { with: /\A\d{,11}\z/ }
-    validates :token, presence: true
+    validates :token
+    validates :item_id
+    validates :user_id
   end
 
   def save

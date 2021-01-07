@@ -15,7 +15,7 @@
 
 ### Association
 
-- has_many : traded_items
+- has_many : orders
 - has_many : items
 
 
@@ -36,10 +36,11 @@
 ### Association
 
 - belongs_to : user
-- has_one    : traded_item
+- has_one    : order
 
 
-## traded_items テーブル
+
+## orders テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -63,9 +64,9 @@
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
 | phone_num     | string     | null: false                    |
-| traded_item   | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to : traded_item
+- belongs_to : order
